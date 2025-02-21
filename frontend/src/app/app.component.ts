@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AccountService } from './services/account.service';
+import { IUser } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +8,19 @@ import { Component } from '@angular/core';
   standalone: false,
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'frontend';
+export class AppComponent implements OnInit{
+  title = 'DC Quiz';
+
+  constructor(private accountService: AccountService) {}
+
+  ngOnInit(): void {
+    this.setCurrentUser();
+  }
+
+  setCurrentUser() {
+    const user: IUser = JSON.parse(localStorage.getItem('user'));
+    if (user) { 
+      this.accountService.setCurrentUser(user);
+    }
+  }
 }
