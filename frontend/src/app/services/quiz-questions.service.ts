@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IQuestions } from '../models/questions';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TestService {
+export class QuizQuestionsService {
 
   constructor(private http: HttpClient) { }
 
-  getTest() {
-    return this.http.get<any>("https://localhost:5001/api/test");
+  GetQuestions(){
+    return this.http.get<IQuestions>("https://localhost:5001/api/QuizQuestion");
   }
 }

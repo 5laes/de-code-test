@@ -4,12 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { TestComponent } from './test/test.component';
+import { QuizQuestionsComponent } from './quiz-questions/quiz-questions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent
+    QuizQuestionsComponent
   ],
   imports: [
     BrowserModule,
