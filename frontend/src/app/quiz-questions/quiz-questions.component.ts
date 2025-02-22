@@ -20,9 +20,7 @@ export class QuizQuestionsComponent implements OnInit{
   GetQuestions(){
     this.quizQuestionsService.GetQuestions().subscribe({
       next: result => {
-        console.log(result);
         this.questions = result;
-        console.log(this.questions);
       },
       error: error => console.log(error)
     });

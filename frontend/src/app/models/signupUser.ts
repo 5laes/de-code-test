@@ -1,4 +1,4 @@
 export interface ISignupUser {
-    username: string;
+    userName: string;
     password: string;
 }

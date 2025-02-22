@@ -13,7 +13,7 @@ export class AccountService {
 
   constructor(private http: HttpClient) { }
 
-  login(model: IUser) {
+  login(model: any) {
     return this.http.post("https://localhost:5001/api/account/login", model).pipe(
       map((response: IUser) => {
         const user = response;
@@ -37,6 +37,15 @@ export class AccountService {
   setCurrentUser(user: IUser) {
     localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);
+  }
+
+  logout() {
+    localStorage.removeItem('user');
+    this.setUserToNull();
+  }
+
+  setUserToNull() {
+    this.currentUserSource.next(null);
   }
 
 }
