@@ -16,5 +16,10 @@ namespace API.Data.Repositories
         {
             return await _context.QuizQuestions.ToListAsync();
         }
+
+        public async Task<QuizQuestion> GetQuestionAsync(int Id)
+        {
+            return await _context.QuizQuestions.FindAsync(Id);
+        }
     }
 }

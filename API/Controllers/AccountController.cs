@@ -55,7 +55,7 @@ namespace API.Controllers
 
             var result = await _userManager.CreateAsync(user, signupDTO.Password);
 
-            if (!result.Succeeded) return BadRequest(result);
+            if (!result.Succeeded) return BadRequest(result.Errors);
 
             return new UserDTO
             {

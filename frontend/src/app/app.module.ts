@@ -13,6 +13,7 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TextInputComponent } from './text-input/text-input.component';
+import { ResultsComponent } from './results/results.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TextInputComponent } from './text-input/text-input.component';
     SignupComponent,
     HomeComponent,
     LoginComponent,
-    TextInputComponent
+    TextInputComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,

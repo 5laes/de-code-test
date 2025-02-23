@@ -1,4 +1,5 @@
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 using API.Entities;
 using API.Interfaces;
@@ -19,10 +20,17 @@ namespace API.Services
 
         public string CreateToken(AppUser user)
         {
+
+            var claims = new List<Claim>
+            {
+                new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName)
+            };
+
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
+                Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.Now.AddDays(7),
                 SigningCredentials = creds,
                 Issuer = _config["Token:Issuer"]

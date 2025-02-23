@@ -10,6 +10,6 @@ export class QuizQuestionsService {
   constructor(private http: HttpClient) { }
 
   GetQuestions(){
-    return this.http.get<IQuestions>("https://localhost:5001/api/QuizQuestion");
+    return this.http.get<IQuestions[]>("https://localhost:5001/api/QuizQuestion");
   }
 }

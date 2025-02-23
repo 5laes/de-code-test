@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250223123527_AnswersTable")]
+    partial class AnswersTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.2");
@@ -100,22 +103,25 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.UserQuizAnswer", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsAnswerCorrect")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("PlayerId")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("QuestionId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("IsAnswerCorrect")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("UserAnswer")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("PlayerId", "QuestionId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("PlayerId");
 
                     b.HasIndex("QuestionId");
 
@@ -255,8 +261,7 @@ namespace API.Data.Migrations
                     b.HasOne("API.Entities.AppUser", "Player")
                         .WithMany("Answers")
                         .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("API.Entities.QuizQuestion", "Question")
                         .WithMany()

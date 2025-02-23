@@ -4,7 +4,7 @@
         <p class="lead">A fun quiz about various topics!</p>
         <div>
             <button [disabled]="(accountService.currentUser$ | async)" routerLink="/signup" class="btn btn-primary btn-lg me-2">Signup</button>
-            <button routerLink="/login" class="btn btn-secondary btn-lg me-2">Login</button>
+            <button [disabled]="(accountService.currentUser$ | async)" routerLink="/login" class="btn btn-info btn-lg me-2">Login</button>
         </div>
     </div>
 </div>
@@ -12,11 +12,12 @@
 <div class="container mt-5">
     <div class="text-center">
         <h1>Already signed in?</h1>
-        <button routerLink="/quiz" class="btn btn-primary btn-lg">Click Here</button>
+        <button routerLink="/quiz" class="btn btn-success btn-lg">Play</button>
+        <button routerLink="/result" class="btn btn-warning btn-lg ms-2">Result</button>
     </div>
 </div>
 
 <div class="container mt-5 text-center" *ngIf="(accountService.currentUser$ | async) as IUser">
     <h2>Hello {{IUser.userName}}</h2>
-    <button class="btn btn-primary btn-lg" (click)="logout()">Logout</button>
+    <button class="btn btn-danger btn-lg" (click)="logout()">Logout</button>
 </div>

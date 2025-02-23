@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container d-flex justify-content-center mt-5">
     <form *ngIf="(accountService.currentUser$ | async) === null" #loginForm="ngForm" class="d-flex" (ngSubmit)="login()" autocomplete="off">
         <input 
             name="userName"

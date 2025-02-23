@@ -9,6 +9,9 @@ namespace API.Helpers
         public AutoMapperProfiles()
         {
             CreateMap<QuizQuestion, QuizQuestionDTO>();
+            CreateMap<UserQuizAnswer, UserQuizAnswersDTO>()
+                .ForMember(dest => dest.Question, opt => opt.MapFrom(src => 
+                    src.Question.Question));
         }
     }
 }
