@@ -39,7 +39,7 @@ namespace API.Data.Repositories
                 _context.UserQuizAnswers.Remove(answer);
             }
 
-            if(await _context.SaveChangesAsync() == 1) return false;
+            if(await _context.SaveChangesAsync() == 0) return false;
             return true;
         }
     }

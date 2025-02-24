@@ -78,7 +78,7 @@ namespace API.Controllers
             if (user == null) return NotFound("Could not find user");
 
             var result = await _answersRepository.DeleteAnswersAsync(user.Id);
-            if (result) return BadRequest("Something went wrong deleting the answers");
+            if (!result) return BadRequest("Something went wrong deleting the answers");
             return Ok();
         }
     }
